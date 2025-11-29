@@ -2022,9 +2022,9 @@ document.addEventListener('DOMContentLoaded', function() {
           // Calculate scroll progress through the section (0 to 1)
           const scrollProgress = Math.min(1, Math.max(0, (scrollPos + windowHeight - sectionTop) / (sectionHeight + windowHeight)));
           
-          // Move cards up as user scrolls - start at 30% down and move up to -40% (total 70% movement)
+          // Move cards up as user scrolls - start at 30% down and move up to -70% (total 100% movement)
           const startPosition = 30; // Start position in %
-          const scrollDistance = 70; // Total movement distance in %
+          const scrollDistance = 100; // Total movement distance in %
           const translateY = startPosition - (scrollProgress * scrollDistance);
           
           cardsContainer.style.transform = 'translateY(' + translateY + '%)';
