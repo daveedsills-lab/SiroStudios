@@ -2026,8 +2026,10 @@ document.addEventListener('DOMContentLoaded', function() {
              // Cards scroll faster on smaller screens
              // Dynamically adjust scroll distance so all cards are visible
              let scrollDistance;
-             if (window.innerWidth <= 425) {
+             if (window.innerWidth < 425) {
                scrollDistance = 160; // Move even faster for very small screens
+             } else if (window.innerWidth === 425) {
+               scrollDistance = 140; // Make 425px screens faster
              } else if (window.innerWidth <= 768) {
                scrollDistance = 100;
              } else if (window.innerWidth <= 1024) {
