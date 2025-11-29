@@ -2022,14 +2022,14 @@ document.addEventListener('DOMContentLoaded', function() {
           // Calculate scroll progress through the section (0 to 1)
           const scrollProgress = Math.min(1, Math.max(0, (scrollPos + windowHeight - sectionTop) / (sectionHeight + windowHeight)));
           
-          // Move cards up as user scrolls - faster on narrow screens for better readability
-          const scrollDistance = window.innerWidth <= 991 ? 120 : 60;
+          // Move cards up as user scrolls - consistent speed across all screens using percentage
+          const scrollDistance = 50; // 50% movement for consistent speed across all screens
           const translateY = -(scrollProgress * scrollDistance);
           
-          cardsContainer.style.transform = 'translateY(' + translateY + 'vh)';
-          cardsContainer.style.webkitTransform = 'translateY(' + translateY + 'vh)';
+          cardsContainer.style.transform = 'translateY(' + translateY + '%)';
+          cardsContainer.style.webkitTransform = 'translateY(' + translateY + '%)';
           
-          console.log('Scroll progress:', scrollProgress.toFixed(2), 'translateY:', translateY.toFixed(2) + 'vh');
+          console.log('Scroll progress:', scrollProgress.toFixed(2), 'translateY:', translateY.toFixed(2) + '%');
         }
       }
       
