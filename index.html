@@ -2024,7 +2024,19 @@ document.addEventListener('DOMContentLoaded', function() {
           
            // Move cards up as user scrolls - more movement for mobile screens
              // Cards scroll faster on smaller screens
-             const scrollDistance = window.innerWidth <= 991 ? 70 : 50; // 70% for mobile, 50% for desktop
+             // Dynamically adjust scroll distance so all cards are visible
+             let scrollDistance;
+             if (window.innerWidth <= 425) {
+               scrollDistance = 120; // Extra scroll for very small screens
+             } else if (window.innerWidth <= 768) {
+               scrollDistance = 100;
+             } else if (window.innerWidth <= 1024) {
+               scrollDistance = 85;
+             } else if (window.innerWidth <= 1440) {
+               scrollDistance = 70;
+             } else {
+               scrollDistance = 50;
+             }
              const translateY = -(scrollProgress * scrollDistance);
              cardsContainer.style.transform = 'translateY(' + translateY + '%)';
              cardsContainer.style.webkitTransform = 'translateY(' + translateY + '%)';
