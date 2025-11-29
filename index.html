@@ -2023,8 +2023,10 @@ document.addEventListener('DOMContentLoaded', function() {
           const scrollProgress = Math.min(1, Math.max(0, (scrollPos + windowHeight - sectionTop) / (sectionHeight + windowHeight)));
           
            // Move cards up as user scrolls - less movement for mobile screens
-           const scrollDistance = window.innerWidth <= 991 ? 20 : 50; // 20% for mobile, 50% for desktop
-           const translateY = -(scrollProgress * scrollDistance);
+           // Increase mobile scroll distance and ensure cards start in view
+           const scrollDistance = window.innerWidth <= 991 ? 35 : 50; // 35% for mobile, 50% for desktop
+           const minTranslateY = 0; // Always start in view
+           const translateY = Math.max(-(scrollProgress * scrollDistance), minTranslateY);
            cardsContainer.style.transform = 'translateY(' + translateY + '%)';
            cardsContainer.style.webkitTransform = 'translateY(' + translateY + '%)';
            console.log('Scroll progress:', scrollProgress.toFixed(2), 'translateY:', translateY.toFixed(2) + '%');
